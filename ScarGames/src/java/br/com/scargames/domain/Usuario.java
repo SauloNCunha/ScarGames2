@@ -37,7 +37,7 @@ public class Usuario implements Serializable{
     
     @NotNull
     @Column(name="dataNascimento")
-    private String dataNascimento;
+    private Date dataNascimento;
     
     @NotNull
     @Column(name="sexo")
@@ -77,7 +77,7 @@ public class Usuario implements Serializable{
         this.senha = senha;
     }
 
-    public Usuario(Integer id, String nome, String cpf, String dataNascimento, String sexo, String telefone, String email, String senha) {
+    public Usuario(Integer id, String nome, String cpf, Date dataNascimento, String sexo, String telefone, String email, String senha) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -112,11 +112,11 @@ public class Usuario implements Serializable{
         this.cpf = cpf;
     }
 
-    public String getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

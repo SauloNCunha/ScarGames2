@@ -24,7 +24,7 @@
                 
                 <div class="ui-g-1"></div>
                 <div class="ui-g-10">
-                    <p:dataTable value="#{generoMB.generos}" var="genero"
+                    <p:dataTable id="generos" value="#{generoMB.generos}" var="genero"
                                  paginator="true" paginatorPosition="bottom"
                                  rows="10" emptyMessage="Nenhum registro encontrado">
                         <f:facet name="header">Listagem de Gêneros</f:facet>
@@ -33,18 +33,21 @@
                             <h:outputText value="#{genero.descricao}"/>
                         </p:column>
                         <p:column headerText="Editar" width="70" style="text-align: center;">
-                            <p:commandButton icon="ui-icon-pencil" action="#{generoMB.carregarDados(genero)}"/>
+                            <p:commandButton icon="ui-icon-pencil" action="#{generoMB.carregarDados(genero)}"
+                                             onclick="PF('gestaoGenero').show()" immediate="true"
+                                             update="form:growl"/>
                         </p:column>
                         <p:column headerText="Excluir" width="70" style="text-align: center;">
                             <p:commandButton icon="ui-icon-trash" action="#{generoMB.excluir(genero)}"
-                                             onclick="if (!confirm('Tem certeza que deseja excluir?')) return false"/>
+                                             onclick="if (!confirm('Tem certeza que deseja excluir?')) return false"
+                                             update="form:growl, generos"/>
                         </p:column>
                     </p:dataTable>
                 </div>
                 <div class="ui-g-1"></div>
             </div>
             
-            <p:dialog closable="true" draggable="false" maximizable="true"
+            <p:dialog id="dlgGenero" closable="true" draggable="false" maximizable="true"
                       minimizable="true" resizable="false" modal="true"
                       header="ScarGames | Gêneros" widgetVar="gestaoGenero"
                       width="800" height="500">
@@ -59,7 +62,8 @@
                     <div class="ui-g-10">
                         <p:inputText id="descricao" placeholder="Descrição"
                                      value="#{generoMB.genero.descricao}"
-                                     style="width: 95%;"/>
+                                     style="width: 95%;" required="true"
+                                     requiredMessage="Campo Descrição é obrigatório"/>
                     </div>
                     <div class="ui-g-1"></div>
                 </div>
@@ -67,7 +71,7 @@
                     <p:commandButton value="Salvar" icon="ui-icon-check"  
                                      action="#{generoMB.inserir()}"
                                      style="width: 150px; margin-right: 20px;"
-                                     update="growl"/>
+                                     update="growl, generos"/>
                     <p:commandButton value="Cancelar" icon="ui-icon-close" 
                                      onclick="PF('gestaoGenero').hide()" 
                                      immediate="true" style="width: 150px;"/>

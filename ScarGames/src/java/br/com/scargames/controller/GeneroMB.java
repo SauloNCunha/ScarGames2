@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import org.primefaces.PrimeFaces;
 
 @ManagedBean(name = "generoMB")
 @ViewScoped
@@ -28,20 +29,22 @@ public class GeneroMB implements Serializable{
     public void inserir(){
         if (service.inserir(genero)){
             UtilMessages.messageInfo("Gênero cadastrado com sucesso!");
-            service.listar();
+            generos = service.listar();
+            PrimeFaces current = PrimeFaces.current();
+            current.executeScript("PF('gestaoGenero').hide();");
         }else{
             UtilMessages.messageError("Ocorreu um erro ao cadastrar o gênero!");
         }
     }
     
     public void carregarDados(Genero genero){
-        
+        this.genero = genero;
     }
     
     public void excluir(Genero genero){
         if (service.excluir(genero)){
             UtilMessages.messageInfo("Gênero excluído com sucesso!");
-            service.listar();
+            generos = service.listar();
         }else{
             UtilMessages.messageError("Ocorreu um erro ao excluir o gênero!");
         }
