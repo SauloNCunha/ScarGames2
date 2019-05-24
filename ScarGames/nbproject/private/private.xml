@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/cidade/alter.xhtml</file>
+            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/src/java/br/com/scargames/controller/BandeiraMB.java</file>
+            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/templates/menu.xhtml</file>
+            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/cidade/list.xhtml</file>
+            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/src/java/br/com/scargames/controller/CidadeMB.java</file>
+            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/index.xhtml</file>
+            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/welcomePrimefaces.xhtml</file>
+            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/src/java/br/com/scargames/services/CidadeService.java</file>
+            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/cidade/new.xhtml</file>
+        </group>
     </open-files>
 </project-private>

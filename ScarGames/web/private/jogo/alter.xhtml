@@ -5,23 +5,23 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="../templates/template.xhtml">
-        <ui:define name="titleWindow">ScarGames - Cidade</ui:define>
+        <ui:define name="titleWindow">ScarGames - Jogo</ui:define>
         <ui:define name="content">
             <div class="ui-g">
                 <div class="ui-g-1"></div>
                 <div class="ui-g-10">
-                    <h1>Alteração de Cidade</h1>
+                    <h1>Alteração de Jogo</h1>
                 </div>
                 <div class="ui-g-1"></div>
                 
                 <div class="ui-g-1"></div>
                 <div class="ui-g-7">
                     <p:inputText id="nome" placeholder="Nome"
-                                 value="#{cidadeMB.cidade.nome}"
+                                 value="#{jogoMB.jogo.nome}"
                                  style="width: 95%;"/>
                 </div>
                 <div class="ui-g-3">
-                    <p:selectOneMenu id="estado" value="#{cidadeMB.cidade.estado}"
+                    <p:selectOneMenu id="estado" value="#{jogoMB.jogo.estado}"
                                      placeholder="UF Estado" >
                         <f:selectItem itemLabel="AC" itemValue="AC" />
                         <f:selectItem itemLabel="AL" itemValue="AL" />
@@ -56,10 +56,10 @@
             </div>
             <div align="center" style="margin-top: 20px;">
                 <p:commandButton value="Salvar" icon="ui-icon-check"  
-                                 action="#{cidadeMB.alterar()}"
+                                 action="#{jogoMB.alterar()}"
                                  style="width: 150px; margin-right: 20px;"/>
                 <p:commandButton value="Cancelar" icon="ui-icon-close" 
-                                 action="#{cidadeMB.cancelar()}" 
+                                 action="#{jogoMB.cancelar()}" 
                                  immediate="true" style="width: 150px;"/>
             </div>
         </ui:define>

@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
 @ManagedBean(name = "cidadeMB")
 @SessionScoped
 public class CidadeMB implements Serializable{
