@@ -5,23 +5,43 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="../templates/template.xhtml">
-        <ui:define name="titleWindow">ScarGames - Cidades</ui:define>
+        <ui:define name="titleWindow">ScarGames - Jogos</ui:define>
         <ui:define name="content">
             <div class="ui-g">
                 <div class="ui-g-1"></div>
                 <div class="ui-g-10">
-                    <h1>Cadastro de Cidades</h1>
+                    <h1>Cadastro de Jogos</h1>
                 </div>
                 <div class="ui-g-1"></div>
                 
                 <div class="ui-g-1"></div>
                 <div class="ui-g-7">
-                    <p:inputText id="nome" placeholder="Nome"
-                                 value="#{cidadeMB.cidade.nome}"
+                    <p:inputText id="nome" placeholder="Titulo"
+                                 value="#{jogoMB.jogo.titulo}"
                                  style="width: 95%;"/>
                 </div>
+                <div class="ui-g-7">
+                    <p:inputText id="nome" placeholder="Titulo"
+                                 value="#{jogoMB.jogo.classificacao}"
+                                 style="width: 95%;"/>
+                </div> 
+                <div class="ui-g-7">
+                    <p:inputText id="nome" placeholder="Sinopse"
+                                 value="#{jogoMB.jogo.sinopse}"
+                                 style="width: 95%;"/>
+                </div> 
+                <div class="ui-g-7">
+                    <p:inputText id="nome" placeholder="Requisitos"
+                                 value="#{jogoMB.jogo.requisitos}"
+                                 style="width: 95%;"/>
+                </div> 
+                <div class="ui-g-7">
+                    <p:inputText id="nome" placeholder="Nota"
+                                 value="#{jogoMB.jogo.nota}"
+                                 style="width: 95%;"/>
+                </div> 
                 <div class="ui-g-3">
-                    <p:selectOneMenu id="estado" value="#{cidadeMB.cidade.estado}" 
+                    <p:selectOneMenu id="estado" value="#{jogoMB.jogo.estado}" 
                                      placeholder="UF Estado" >
                         <f:selectItem itemLabel="AC" itemValue="AC" />
                         <f:selectItem itemLabel="AL" itemValue="AL" />
@@ -56,11 +76,11 @@
             </div>
             <div align="center" style="margin-top: 20px;">
                 <p:commandButton value="Salvar" icon="ui-icon-check"  
-                                 action="#{cidadeMB.inserir()}"
+                                 action="#{jogoMB.inserir()}"
                                  style="width: 150px; margin-right: 20px;"
                                  update="growl"/>
                 <p:commandButton value="Cancelar" icon="ui-icon-close" 
-                                 action="#{cidadeMB.cancelar()}" 
+                                 action="#{jogoMB.cancelar()}" 
                                  immediate="true" style="width: 150px;"/>
             </div>
         </ui:define>
