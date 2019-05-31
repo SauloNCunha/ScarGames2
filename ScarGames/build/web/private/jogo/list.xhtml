@@ -7,15 +7,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
     <ui:composition template="../templates/template.xhtml">
-        <ui:define name="titleWindow">ScarGames - Bandeiras</ui:define>
+        <ui:define name="titleWindow">ScarGames - Jogo</ui:define>
         <ui:define name="content">
             <div class="ui-g">
                 <div class="ui-g-1"></div>
                 <div class="ui-g-9">
-                    <h1>Cidades</h1>
+                    <h1>Jogos</h1>
                 </div>
                 <div class="ui-g-1">
-                    <p:commandLink action="#{cidadeMB.novo()}">
+                    <p:commandLink action="#{jogoMB.novo()}">
                         <p:graphicImage url="/resources/img/add.png" 
                                         height="40" width="40" title="Novo"
                                         style="margin-top: 20px; float: right;"/>
@@ -25,24 +25,36 @@
                 
                 <div class="ui-g-1"></div>
                 <div class="ui-g-10">
-                    <p:dataTable value="#{cidadeMB.cidades}" var="cidade"
+                    <p:dataTable value="#{jogoMB.jogos}" var="jogo"
                                  paginator="true" paginatorPosition="bottom"
                                  rows="10" emptyMessage="Nenhum registro encontrado">
-                        <f:facet name="header">Listagem de Bandeiras</f:facet>
-                        <f:facet name="footer">Total de Registros: #{cidadeMB.cidades.size()}</f:facet>
-                        <p:column headerText="Descrição" sortBy="#{cidade.nome}">
-                            <h:outputText value="#{cidade.nome}"/>
+                        <f:facet name="header">Listagem de Jogo</f:facet>
+                        <f:facet name="footer">Total de Registros: #{jogoMB.jogos.size()}</f:facet>
+                        <p:column headerText="Nome" sortBy="#{jogo.titulo}">
+                            <h:outputText value="#{jogo.titulo}"/>
                         </p:column>
-                        <p:column headerText="Estado" sortBy="#{cidade.estado}">
-                            <h:outputText value="#{cidade.estado}"/>
+                        <p:column headerText="Nota" sortBy="#{jogo.nota}">
+                            <h:outputText value="#{jogo.nota}"> <f:convertNumber minFractionDigits="2" /> </h:outputText>
+                            
+                        </p:column>
+                        <p:column headerText="Genero" sortBy="#{jogo.genero.descricao}">
+                            <h:outputText value="#{jogo.genero.descricao}"/>
+                        </p:column>
+                        <p:column headerText="Produtora" sortBy="#{jogo.produtora.nome}">
+                            <h:outputText value="#{jogo.produtora.nome}"/>
+                        </p:column>
+                        <p:column headerText="Valor" sortBy="#{jogo.valor}">
+                            <h:outputText value="#{jogo.valor}"> <f:convertNumber minFractionDigits="2" /> </h:outputText>
+                            
                         </p:column>
                         <p:column headerText="Editar" width="70" style="text-align: center;">
-                            <p:commandButton icon="ui-icon-pencil" action="#{cidadeMB.carregarDados(cidade)}"/>
+                            <p:commandButton icon="ui-icon-pencil" action="#{jogoMB.carregarDados(jogo)}"/>
                         </p:column>
                         <p:column headerText="Excluir" width="70" style="text-align: center;">
-                            <p:commandButton icon="ui-icon-trash" action="#{cidadeMB.excluir(cidade)}"
+                            <p:commandButton icon="ui-icon-trash" action="#{jogoMB.excluir(jogo)}"
                                              onclick="if (!confirm('Tem certeza que deseja excluir?')) return false"/>
                         </p:column>
+                        
                     </p:dataTable>
                 </div>
                 <div class="ui-g-1"></div>

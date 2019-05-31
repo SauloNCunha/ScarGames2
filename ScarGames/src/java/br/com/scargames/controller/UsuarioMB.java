@@ -5,10 +5,11 @@ import br.com.scargames.services.UsuarioService;
 import br.com.scargames.util.UtilMessages;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import java.util.List;
 
 @ManagedBean(name = "usuarioMB")
-@RequestScoped
+@SessionScoped
 public class UsuarioMB implements Serializable{
 
     private Usuario usuario;
@@ -16,11 +17,23 @@ public class UsuarioMB implements Serializable{
     private String senha;
     
     public UsuarioMB() {
+        this.listar();
+        
+    }
+    
+    
+    private List<Usuario> usuarios;   
+    
+    public void listar(){
+        UsuarioService service = new UsuarioService();
+        usuarios = service.listar();
     }
     
     public void inicializarHibernate(){
         UsuarioService service = new UsuarioService();
         service.inicializarHibernate();
+        this.listar();
+        System.out.println("Tamanho: " + usuarios.size());
     }
     
     public String autenticar(){
@@ -57,4 +70,16 @@ public class UsuarioMB implements Serializable{
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+    
+    
+    
+    
 }

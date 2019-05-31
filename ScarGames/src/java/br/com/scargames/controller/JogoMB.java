@@ -4,13 +4,14 @@ package br.com.scargames.controller;
 import br.com.scargames.domain.Jogo;
 import br.com.scargames.services.JogoService;
 import br.com.scargames.util.UtilMessages;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.List;
 
-@ManagedBean(name = "jogaMB")
+@ManagedBean(name = "jogoMB")
 @SessionScoped
-public class JogoMB {
+public class JogoMB implements Serializable{
 
      public JogoMB() {
         this.listar();

@@ -15,63 +15,63 @@
                 <div class="ui-g-1"></div>
                 
                 <div class="ui-g-1"></div>
-                <div class="ui-g-7">
-                    <p:inputText id="nome" placeholder="Titulo"
+                <div class="ui-g-5">
+                    <p:inputText id="titulo" placeholder="Titulo"
                                  value="#{jogoMB.jogo.titulo}"
                                  style="width: 95%;"/>
                 </div>
-                <div class="ui-g-7">
-                    <p:inputText id="nome" placeholder="Titulo"
-                                 value="#{jogoMB.jogo.classificacao}"
-                                 style="width: 95%;"/>
+                <div class="ui-g-5">
+                    <p:selectOneMenu id="classificacao" value="#{jogoMB.jogo.classificacao}" 
+                                     placeholder="Classificação" >
+                        <f:selectItem itemLabel="Livre" itemValue="1" />
+                        <f:selectItem itemLabel="Maior de 12" itemValue="12" />
+                        <f:selectItem itemLabel="Maior de 14" itemValue="14" />
+                        <f:selectItem itemLabel="Maior de 16" itemValue="16" />
+                        <f:selectItem itemLabel="Maior de 18" itemValue="18" />
+                    </p:selectOneMenu>    
                 </div> 
-                <div class="ui-g-7">
-                    <p:inputText id="nome" placeholder="Sinopse"
-                                 value="#{jogoMB.jogo.sinopse}"
-                                 style="width: 95%;"/>
-                </div> 
-                <div class="ui-g-7">
-                    <p:inputText id="nome" placeholder="Requisitos"
+                 <div class="ui-g-1"></div>
+                 
+                  <div class="ui-g-1"></div>
+                <div class="ui-g-5">
+                    <p:inputText id="requisito" placeholder="Requisitos"
                                  value="#{jogoMB.jogo.requisitos}"
                                  style="width: 95%;"/>
                 </div> 
-                <div class="ui-g-7">
-                    <p:inputText id="nome" placeholder="Nota"
+                <div class="ui-g-5">
+                    <p:inputText id="nota" placeholder="Nota"
                                  value="#{jogoMB.jogo.nota}"
                                  style="width: 95%;"/>
                 </div> 
-                <div class="ui-g-3">
-                    <p:selectOneMenu id="estado" value="#{jogoMB.jogo.estado}" 
-                                     placeholder="UF Estado" >
-                        <f:selectItem itemLabel="AC" itemValue="AC" />
-                        <f:selectItem itemLabel="AL" itemValue="AL" />
-                        <f:selectItem itemLabel="AM" itemValue="AM" />
-                        <f:selectItem itemLabel="AP" itemValue="AP" />
-                        <f:selectItem itemLabel="BA" itemValue="BA" />
-                        <f:selectItem itemLabel="CE" itemValue="CE" />
-                        <f:selectItem itemLabel="DF" itemValue="DF" />
-                        <f:selectItem itemLabel="ES" itemValue="ES" />
-                        <f:selectItem itemLabel="GO" itemValue="GO" />
-                        <f:selectItem itemLabel="MA" itemValue="MA" />
-                        <f:selectItem itemLabel="MG" itemValue="MG" />
-                        <f:selectItem itemLabel="MS" itemValue="MS" />
-                        <f:selectItem itemLabel="MT" itemValue="MT" />
-                        <f:selectItem itemLabel="PA" itemValue="PA" />
-                        <f:selectItem itemLabel="PB" itemValue="PB" />
-                        <f:selectItem itemLabel="PE" itemValue="PE" />
-                        <f:selectItem itemLabel="PI" itemValue="PI" />
-                        <f:selectItem itemLabel="PR" itemValue="PR" />
-                        <f:selectItem itemLabel="RJ" itemValue="RJ" />
-                        <f:selectItem itemLabel="RN" itemValue="RN" />
-                        <f:selectItem itemLabel="RO" itemValue="RO" />
-                        <f:selectItem itemLabel="RR" itemValue="RR" />
-                        <f:selectItem itemLabel="RS" itemValue="RS" />
-                        <f:selectItem itemLabel="SC" itemValue="SC" />
-                        <f:selectItem itemLabel="SE" itemValue="SE" />
-                        <f:selectItem itemLabel="SP" itemValue="SP" />
-                        <f:selectItem itemLabel="TO" itemValue="TO" />
+                   <div class="ui-g-1"></div>
+                <div align="center" class="ui-g-8">
+                    <p:inputTextarea id="sinopse" placeholder="Sinopse"
+                                 value="#{jogoMB.jogo.sinopse}"
+                                 style="width: 95%;"/>
+                </div>
+                <div align="center" class="ui-g-5">
+                    <p:selectOneMenu value="#{jogoMB.jogo.genero}" converter="entityConverter" 
+                                     placeholder="Genero" >
+                        <f:selectItems value="#{generoMB.generos}" 
+                                       var="genero" 
+                                       itemLabel="#{genero.descricao}"
+                                       itemValue="#{genero}"/>
                     </p:selectOneMenu>
                 </div>
+                <div class="ui-g-5">
+                    <p:selectOneMenu value="#{jogoMB.jogo.produtora}" converter="entityConverter" >
+                        <f:selectItems value="#{produtoraMB.produtoras}" 
+                                       var="produtora" 
+                                       itemLabel="#{produtora.nome}"
+                                       itemValue="#{produtora}"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="ui-g-1"></div>
+                    <div class="ui-g-5">
+                        <p:inputText id="Valor" placeholder="Valor"
+                                     value="#{jogoMB.jogo.valor}"
+                                     style="width: 95%;"/>
+                    </div> 
                 <div class="ui-g-1"></div>
             </div>
             <div align="center" style="margin-top: 20px;">
