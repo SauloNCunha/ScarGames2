@@ -2,19 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/produtora/list.xhtml</file>
-            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/cartao/list.xhtml</file>
-            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/src/java/br/com/scargames/controller/ProdutoraMB.java</file>
-            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/jogo/alter.xhtml</file>
-            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/produtora/new.xhtml</file>
-            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/src/java/br/com/scargames/controller/CartaoMB.java</file>
-            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/templates/menu.xhtml</file>
-            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/src/java/br/com/scargames/controller/UsuarioMB.java</file>
-            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/cartao/alter.xhtml</file>
-            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/produtora/alter.xhtml</file>
-            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/cartao/new.xhtml</file>
-            <file>file:/C:/Users/saulo/Documents/NetBeansProjects/ScarGames/ScarGames/web/private/jogo/new.xhtml</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
