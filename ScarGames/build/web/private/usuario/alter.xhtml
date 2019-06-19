@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="../templates/template.xhtml">
+        <ui:define name="titleWindow">Alterar Usuario</ui:define>
+        <ui:define name="content">
+            <div class="ui-g">
+                <div class="ui-g-1"></div>
+                <div class="ui-g-10">
+                    <h1>Alteração de Usuario</h1>
+                </div>
+                
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-4">
+                    <p:inputText id="nome" placeholder="Nome" 
+                                 value="#{usuarioMB.usuario.nome}"
+                                 style="width: 95%;"/>
+                </div>
+                
+                <div class="ui-g-1"></div>
+
+                <div class="ui-g-4">
+                    <p:inputText id="email" placeholder="Email" 
+                                 value="#{usuarioMB.usuario.email}"
+                                 style="width: 95%;"/>
+                </div>
+
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-4">
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                    <p:selectOneRadio id="console" value="#{usuarioMB.usuario.sexo}">
+                        <f:selectItem itemLabel="Masculino" itemValue="M" />
+                        <f:selectItem itemLabel="Feminino" itemValue="F" />
+                    </p:selectOneRadio>
+                </h:panelGrid>
+                </div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-2">
+                    <p:inputMask mask="999.999.999-99" id="cpf" placeholder="CPF" 
+                                 value="#{usuarioMB.usuario.cpf}"
+                                 style="width: 95%;"/>
+                </div>
+                
+                <div class="ui-g-3">
+                    <p:calendar mask="true" pattern="dd/MM/yyyy" 
+                                timeOnly="false" id="popup" 
+                                value="#{usuarioMB.usuario.dataNascimento}" placeholder="Data de Nascimento"/>
+                </div>
+                
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-2">
+                    <p:inputMask mask="(99)9 9999-9999" id="telefone" placeholder="Telefone" 
+                                 value="#{usuarioMB.usuario.telefone}"
+                                 style="width: 95%;"/>
+                </div>
+                
+                <div class="ui-g-2">
+                    <p:password id="senha" placeholder="Senha" 
+                                value="#{usuarioMB.usuario.senha}" feedback="true"
+                                style="width: 95%;"/>
+                </div>
+                <div class="ui-g-6"></div>
+                <div class="ui-g-5"></div>
+                <div align="center" style="margin-top: 20px;">
+                    <p:commandButton value="Alterar" action="#{usuarioMB.alterar()}" update="growl"/>
+                    <p:commandButton value="Cancelar" action="#{usuarioMB.cancelar()}" immediate="true"/>
+                </div>
+                </div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-10">
+                    <h1>Alteração de Endereços do(a) #{usuarioMB.usuario.nome}</h1>
+                </div>
+                <div class="ui-g-11"></div>
+                 <div class="ui-g-1">
+                            <p:commandLink action="#{usuarioMB.novoEnderecoUpdateUser()}" immediate="true">
+                    <p:graphicImage url="/resources/img/add_adress.png" title="Novo Endereço"
+                                    height="40" width="40" />
+                    </p:commandLink>
+                </div>
+                
+                <div class="ui-g-12">
+                    <p:dataTable id="tabelaEndereco" value="#{usuarioMB.enderecos}" var="endereco" 
+                             paginator="true" paginatorPosition="bottom" 
+                             rows="10" emptyMessage="Nenhum Registro Encontrado">
+                    <f:facet name="header">
+                       
+                        <h:column>
+                            <p:inputText value="#{usuarioMB.endereco.logradouro}" placeholder="Logradouro"/>
+                        </h:column>
+                        <h:column>
+                            <p:inputNumber value="#{usuarioMB.endereco.numero}" placeholder="Numero" decimalPlaces="0"/>
+                        </h:column>
+                        <h:column>
+                            <p:inputText value="#{usuarioMB.endereco.complemento}" placeholder="Complemento"/>
+                        </h:column>
+                        <h:column>
+                            <p:inputText value="#{usuarioMB.endereco.bairro}" placeholder="Bairro"/>
+                        </h:column>
+                        <h:column>
+                            <p:inputMask mask="99999-999" placeholder="Cep" 
+                                         value="#{usuarioMB.endereco.cep}"/>
+                        </h:column>
+                        <h:column>
+                            <p:selectOneMenu value="#{usuarioMB.endereco.cidade}" converter="entityConverter" >
+                                <f:selectItems value="#{cidadeMB.cidades}" var="cidade" itemLabel="#{cidade.nome}" 
+                                               itemValue="#{cidade}"></f:selectItems>
+                            </p:selectOneMenu>
+                        </h:column>
+                        
+                        <h:column >
+                            <p:commandButton value="Alterar" action="#{usuarioMB.alterarEndereco()}" update="form:growl,tabelaEndereco" style="padding-right: 10px;"/>
+                        </h:column>
+                        
+                     </f:facet>
+                    <f:facet name="footer">Total de Registros: #{usuarioMB.enderecos.size()}</f:facet>
+                    <p:column>
+                        <f:facet name="header">Logradouro</f:facet>
+                        <h:outputText value="#{endereco.logradouro}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Numero</f:facet>
+                        <h:outputText value="#{endereco.numero}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Complemento</f:facet>
+                        <h:outputText value="#{endereco.complemento}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Bairro</f:facet>
+                        <h:outputText value="#{endereco.bairro}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Cep</f:facet>
+                        <h:outputText value="#{endereco.cep}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Cidade</f:facet>
+                        <h:outputText value="#{endereco.cidade.nome}"/>
+                    </p:column>
+                    <p:column headerText="Editar" width="70" style="text-align: center;">
+                        <p:commandButton icon="ui-icon-pencil" action="#{usuarioMB.carregarDadosEndereco(endereco)}" update="form:growl,tabelaEndereco"/>
+                    </p:column>
+                    <p:column headerText="Excluir" width="70" style="text-align: center;">
+                        <p:commandButton icon="ui-icon-trash" action="#{usuarioMB.deletarEndereco(endereco)}"
+                                         onclick="if(!confirm('Tem certeza que deseja excluir ?')) return false" update="form:growl,tabelaEndereco" immediate="true"/>
+                    </p:column>
+                </p:dataTable>
+                </div>
+        </ui:define>
+     
+    </ui:composition>
+</html>
+

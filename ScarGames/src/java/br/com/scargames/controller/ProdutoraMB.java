@@ -3,13 +3,14 @@ package br.com.scargames.controller;
 import br.com.scargames.domain.Produtora;
 import br.com.scargames.services.ProdutoraService;
 import br.com.scargames.util.UtilMessages;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.List;
 
 @ManagedBean(name = "produtoraMB")
 @SessionScoped
-public class ProdutoraMB {
+public class ProdutoraMB implements Serializable{
 
    private Produtora produtora;
     private List<Produtora> produtoras;

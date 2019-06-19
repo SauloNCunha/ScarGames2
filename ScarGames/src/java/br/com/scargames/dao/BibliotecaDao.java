@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 public class BibliotecaDao {
 
-    public List<Biblioteca> listar(){
+    public List<Biblioteca> lista(){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
@@ -21,11 +21,25 @@ public class BibliotecaDao {
         }
     }
     
-    public Biblioteca consultar(Integer id){
+    public List<Biblioteca> listaPorUsuario(Integer id){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            Biblioteca biblioteca = (Biblioteca)session.createQuery("from Biblioteca where id = " + id).uniqueResult();
+            List<Biblioteca> lista = session.createQuery("from Biblioteca where usuario = " + id).list();
+            session.getTransaction().commit();
+            return lista;
+        }catch(Exception e){
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public Biblioteca consulta(Integer id){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        try{
+            Biblioteca biblioteca = (Biblioteca) session.createQuery("from Biblioteca where id = " + id).uniqueResult();
             session.getTransaction().commit();
             return biblioteca;
         }catch(Exception e){
@@ -47,6 +61,7 @@ public class BibliotecaDao {
             e.printStackTrace();
             return false;
         }
+        
     }
     
     public Boolean alterar(Biblioteca biblioteca){
@@ -62,7 +77,7 @@ public class BibliotecaDao {
             return false;
         }
     }
-    
+	
     public Boolean excluir(Biblioteca biblioteca){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -75,5 +90,5 @@ public class BibliotecaDao {
             e.printStackTrace();
             return false;
         }
-    }
+    } 
 }

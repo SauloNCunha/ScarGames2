@@ -71,6 +71,7 @@
                         <p:inputText id="Valor" placeholder="Valor"
                                      value="#{jogoMB.jogo.valor}"
                                      style="width: 95%;"/>
+                        <p:ajax event="blur" update="preco" listener="#{jogoMB.formatarValor()}"/>
                     </div> 
                 <div class="ui-g-1"></div>
             </div>

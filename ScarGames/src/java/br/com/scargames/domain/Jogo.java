@@ -74,6 +74,8 @@ public class Jogo implements Serializable {
         this.genero = genero;
         this.produtora = produtora;
     }
+    
+    
 
     public Integer getId() {
         return id;

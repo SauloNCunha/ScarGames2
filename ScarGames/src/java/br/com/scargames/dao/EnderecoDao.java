@@ -6,14 +6,13 @@ import java.util.List;
 import org.hibernate.Session;
 
 public class EnderecoDao {
-
-    public List<Endereco> listar(){
+    public List<Endereco> lista(){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            List<Endereco> lista = session.createQuery("from Endereco order by logradouro asc").list();
+            List<Endereco> endereco = session.createQuery("from Endereco order by logradouro asc").list();
             session.getTransaction().commit();
-            return lista;
+            return endereco;
         }catch(Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
@@ -21,11 +20,25 @@ public class EnderecoDao {
         }
     }
     
-    public Endereco consultar(Integer id){
+    public Endereco consulta(Integer id){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try{
-            Endereco endereco = (Endereco)session.createQuery("from Endereco where id = " + id).uniqueResult();
+            Endereco endereco = (Endereco) session.createQuery("from Endereco where id = " + id).uniqueResult();
+            session.getTransaction().commit();
+            return endereco;
+        }catch(Exception e){
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public List<Endereco> listaPorUsuario(Integer id){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        try{
+            List<Endereco> endereco = session.createQuery("from Endereco where usuario = " + id).list();
             session.getTransaction().commit();
             return endereco;
         }catch(Exception e){
@@ -47,6 +60,7 @@ public class EnderecoDao {
             e.printStackTrace();
             return false;
         }
+        
     }
     
     public Boolean alterar(Endereco endereco){
@@ -62,7 +76,6 @@ public class EnderecoDao {
             return false;
         }
     }
-    
     public Boolean excluir(Endereco endereco){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -75,5 +88,5 @@ public class EnderecoDao {
             e.printStackTrace();
             return false;
         }
-    }
+    } 
 }

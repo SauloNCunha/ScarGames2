@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="../templates/template.xhtml">
+        <ui:define name="titleWindow">ScarGames - Biblioteca</ui:define>
+        <ui:define name="content">
+            <div class="ui-g">
+                <div class="ui-g-1"></div>
+                <div class="ui-g-9">
+                    <h1>Biblioteca</h1>
+                </div>
+                <div class="ui-g-1">
+                    <p:commandLink action="#{bibliotecaMB.novo()}">
+                    <p:graphicImage url="/resources/img/add.png" title="Novo"
+                                    height="40" width="40" style="margin-top: 20px; float: right;"/>
+                    </p:commandLink>
+                </div>
+                <div class="ui-g-1"></div>
+                
+                <div class="ui-g-1"></div>
+                <div class="ui-g-10">
+                <p:dataTable id="tabelaBiblioteca" value="#{bibliotecaMB.bibliotecas}" var="biblioteca" 
+                             paginator="true" paginatorPosition="bottom" 
+                             rows="10" emptyMessage="Nenhum Registro Encontrado">
+                    <f:facet name="header">Listagem de sua Biblioteca</f:facet>
+                    <f:facet name="footer">Total de Registros: #{bibliotecaMB.bibliotecas.size()}</f:facet>
+                    <p:column>
+                        <f:facet name="header">Usuario</f:facet>
+                        <h:outputText value="#{biblioteca.usuario.nome}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Título</f:facet>
+                        <h:outputText value="#{biblioteca.jogo.titulo}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Sinopse</f:facet>
+                        <h:outputText value="#{biblioteca.jogo.sinopse}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Gênero</f:facet>
+                        <h:outputText value="#{biblioteca.jogo.genero.descricao}"/>
+                    </p:column>
+                    <p:column headerText="Deletar Jogo" width="70" style="text-align: center;">
+                        <p:commandButton icon="ui-icon-trash" action="#{bibliotecaMB.excluir(biblioteca)}"
+                                         onclick="if(!confirm('Tem certeza que deseja excluir ?')) return false" update="form:growl,tabelaBiblioteca"/>
+                    </p:column>
+                </p:dataTable>
+              </div>
+                <div class="ui-g-1"></div>
+            </div>
+        </ui:define>
+            
+        </ui:composition>
+    
+    
+</html>
+

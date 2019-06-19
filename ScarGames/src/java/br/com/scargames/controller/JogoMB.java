@@ -8,6 +8,9 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.List;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 @ManagedBean(name = "jogoMB")
 @SessionScoped
@@ -18,8 +21,17 @@ public class JogoMB implements Serializable{
     }
     
     private Jogo jogo;
-    private List<Jogo> jogos;   
+    private List<Jogo> jogos;
+    private String valor = "";
     
+    public void formatarValor() {  
+        DecimalFormat df = (DecimalFormat) DecimalFormat.getCurrencyInstance(Locale.US);
+        ((DecimalFormat)df).applyPattern("0.00");
+        double numeroFormatar = Double.parseDouble(valor);
+        
+        String numero = df.format(numeroFormatar);
+        valor = numero;
+    }
     
     public void listar(){
         JogoService service = new JogoService();

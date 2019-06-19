@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="../templates/template.xhtml">
+        <ui:define name="titleWindow">Cadastrar Endereço</ui:define>
+        <ui:define name="content">
+            <div class="ui-g">
+                <div class="ui-g-1"></div>
+                <div class="ui-g-10">
+                    <h1>Cadastro de Endereços</h1>
+                </div>
+                
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-6">
+                    <p:inputText value="#{usuarioMB.endereco.logradouro}" placeholder="Logradouro"/>
+                </div>
+                
+                <div class="ui-g-3">
+                    <p:inputNumber value="#{usuarioMB.endereco.numero}" placeholder="Numero" decimalPlaces="0"/>
+                </div>
+                
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-3">
+                    <p:inputText value="#{usuarioMB.endereco.complemento}" placeholder="Complemento"/>
+                </div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+                <div class="ui-g-3">
+                    <p:inputText value="#{usuarioMB.endereco.bairro}" placeholder="Bairro"/>
+                </div>
+                <div class="ui-g-3">
+                    <p:inputMask mask="99999-999" placeholder="Cep" 
+                                         value="#{usuarioMB.endereco.cep}"/>
+                </div>
+                
+                <div class="ui-g-3">
+                    <p:selectOneMenu value="#{usuarioMB.endereco.cidade}" converter="entityConverter" >
+                                <f:selectItems value="#{cidadeMB.cidades}" var="cidade" itemLabel="#{cidade.nome}" 
+                                               itemValue="#{cidade}"></f:selectItems>
+                            </p:selectOneMenu>
+                </div>
+                
+                <div class="ui-g-1"></div>
+                <div class="ui-g-1"></div>
+               
+            </div>
+            <div align="center" style="margin-top: 20px;">
+                <p:commandButton value="Inserir" action="#{usuarioMB.adicionarNovoEndereco()}" update="growl"/>
+                <p:commandButton value="Cancelar" action="#{usuarioMB.voltarAlter()}" immediate="true"/>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

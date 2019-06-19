@@ -6,19 +6,19 @@ import br.com.scargames.util.HashMaker;
 import java.util.List;
 
 public class UsuarioService {
-    
-    private final UsuarioDao usuarioDao = new UsuarioDao();
-    
+   
+    UsuarioDao usuarioDao = new UsuarioDao();
+	
     public void inicializarHibernate(){
         usuarioDao.inicializarHibernate();
     }
-    
+	
     public List<Usuario> listar(){
-        return usuarioDao.listar();
+        return usuarioDao.lista();
     }
     
-    public Usuario consultar(Integer id){
-        return usuarioDao.consultar(id);
+    public Usuario consultar(Integer id ){
+        return usuarioDao.consulta(id);
     }
     
     public Boolean inserir(Usuario usuario){
@@ -27,6 +27,7 @@ public class UsuarioService {
     }
     
     public Boolean alterar(Usuario usuario){
+        usuario.setSenha(HashMaker.stringHexa(HashMaker.gerarHash(usuario.getSenha())));
         return usuarioDao.alterar(usuario);
     }
     
@@ -35,17 +36,16 @@ public class UsuarioService {
     }
     
     public Boolean autenticar(Usuario usuario){
-        Usuario usuarioBanco = usuarioDao.consultarPorEmail(usuario.getEmail());
-        if (usuarioBanco == null){
+        Usuario usuarioBanco = usuarioDao.consultaPorEmail(usuario.getEmail());
+        if(usuarioBanco == null){
             return false;
         }else{
             String senhaCriptografada = HashMaker.stringHexa(HashMaker.gerarHash(usuario.getSenha()));
-            if (!senhaCriptografada.equals(usuarioBanco.getSenha())){
+            if(!senhaCriptografada.equals(usuarioBanco.getSenha())){
                 return false;
             }else{
                 return true;
             }
         }
-    }
-    
+    }    
 }

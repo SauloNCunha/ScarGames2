@@ -1,12 +1,14 @@
 package br.com.scargames.domain;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+						   
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,42 +21,42 @@ import org.hibernate.validator.constraints.Email;
 
 @Entity
 @Table(name="usuario")
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
-    
+	
     @NotNull
     @Column(name="nome")
-    @Size(min=1,max=100)
+    @Size(min=1,max=45)
     private String nome;
-    
+	
     @NotNull
     @Column(name="cpf")
-    @Size(min=11,max=11)
+    @Size(min=0,max=14)
     private String cpf;
-    
+	
     @NotNull
     @Column(name="dataNascimento")
     private Date dataNascimento;
-    
+	
     @NotNull
     @Column(name="sexo")
     @Size(min=1,max=1)
     private String sexo;
-    
+	
     @NotNull
     @Column(name="telefone")
     @Size(min=1,max=45)
     private String telefone;
-    
+	
     @NotNull
     @Column(name="email",unique=true)
     @Size(min=1,max=50)
     @Email
     private String email;
-    
+	
     @NotNull
     @Column(name="senha")
     @Size(min=6,max=100)
@@ -68,14 +70,15 @@ public class Usuario implements Serializable{
     
     @OneToOne(mappedBy="usuario")
     private Biblioteca biblioteca;
-    
     public Usuario() {
+    
+					  
     }
     
-    public Usuario(String email, String senha){
-        this.email = email;
-        this.senha = senha;
-    }
+											   
+						   
+						   
+	 
 
     public Usuario(Integer id, String nome, String cpf, Date dataNascimento, String sexo, String telefone, String email, String senha) {
         this.id = id;
@@ -84,6 +87,11 @@ public class Usuario implements Serializable{
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
         this.telefone = telefone;
+        this.email = email;
+        this.senha = senha;
+    }
+    
+    public Usuario(String email, String senha){
         this.email = email;
         this.senha = senha;
     }
@@ -175,11 +183,13 @@ public class Usuario implements Serializable{
     public void setBiblioteca(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
     }
+    
+    
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.id);
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.id);
         return hash;
     }
 

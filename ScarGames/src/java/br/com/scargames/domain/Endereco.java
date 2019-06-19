@@ -16,35 +16,35 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name="endereco")
 public class Endereco implements Serializable{
-    
+	
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
-    
+	
     @NotNull
     @Column(name="logradouro")
     @Size(min=1,max=100)
     private String logradouro;
-    
+	
     @NotNull
     @Column(name="numero")
     @Size(min=1,max=20)
     private String numero;
-
+    @NotNull
     @Column(name="complemento")
     @Size(min=1,max=30)
     private String complemento;
-    
+	
     @NotNull
     @Column(name="bairro")
     @Size(min=1,max=100)
     private String bairro;
-    
+	
     @NotNull
     @Column(name="cep")
     @Size(min=1,max=10)
     private String cep;
-    
+	
     @JoinColumn(name="cidade",referencedColumnName="id")
     @ManyToOne(optional=false)
     private Cidade cidade;
@@ -56,7 +56,7 @@ public class Endereco implements Serializable{
     public Endereco() {
     }
 
-    public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep, Cidade cidade, Usuario usuario) {
+    public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep, Cidade cidade) {
         this.id = id;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -64,7 +64,7 @@ public class Endereco implements Serializable{
         this.bairro = bairro;
         this.cep = cep;
         this.cidade = cidade;
-        this.usuario = usuario;
+							   
     }
 
     public Integer getId() {
@@ -133,8 +133,8 @@ public class Endereco implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.id);
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -154,5 +154,5 @@ public class Endereco implements Serializable{
             return false;
         }
         return true;
-    }
+    } 
 }
